@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, url_for, jsonify, render_template
 
 app = Flask(__name__)
+print(">>> DOSYA:", __file__)
 
 URUNLER = [
     {"id": 1, "ad": "Klavye", "fiyat": 450, "kategori": "aksesuar"},
@@ -122,23 +123,7 @@ def ozet():
 
 @app.route("/panel")
 def panel():    
-    return """
-    <h2>Ürün paneli</h2>
-    <input type="text" id="kategoriKutusu" placeholder="kategori girin...">
-    <button onclick="urunleriGetir()">Ara</button>
-    <div id="cikti">Henüz veri yok</div>
-
-    <script>
-    async function urunleriGetir() {
-        const kategori = document.getElementById("kategoriKutusu").value;
-        const yanit = await fetch("/api/urunler?kategori=" + kategori);
-        const veri = await yanit.json();
-        
-        const satirlar = veri.urunler.map(u => "<li>" + u.ad + " - " + u.fiyat + " TL</li>");
-        document.getElementById("cikti").innerHTML = "<ul>" + satirlar.join("") + "</ul>";
-    }
-    </script>
-    """
+    return render_template("index.html", baslik="Ürün Paneli", urunler=URUNLER)
 
 if __name__ == "__main__":
     app.run(debug=True)

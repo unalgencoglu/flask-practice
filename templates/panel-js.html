@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block baslik %}Ürün Paneli{% endblock %}
+
+{% block icerik %}
+    <h2> {{ baslik }} </h2>
+    <input type="text" id="kategoriKutusu" placeholder="kategori girin...">
+    <button onclick="urunleriGetir()">Ara</button>
+    <div id="cikti">Henüz veri yok</div>
+{% endblock %}
+
+{% block scriptler %}
+<script src="{{ url_for('static', filename='js.js') }}"></script>
+{% endblock %}

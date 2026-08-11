@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta charset="UTF-8">
+        <title> {% block baslik %}Site{% endblock %} </title>
+    </head>
+    <body>
+        <nav>
+            <a href="{{ url_for('anasayfa') }}">anasayfa</a>
+            <a href="{{ url_for('ozet') }}">Özet</a>
+        </nav>
+
+        {% block icerik %} {% endblock %}
+
+        {% block scriptler %} {% endblock %}
+    </body>
+</html>
