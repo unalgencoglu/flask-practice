@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for, jsonify
+from flask import Flask, request, redirect, url_for, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -11,7 +11,7 @@ URUNLER = [
 
 @app.route("/")
 def anasayfa():
-    return "<h1>Merhaba</h1>"
+    return render_template("index.html", baslik="Ürün Paneli", urunler=URUNLER)
 
 @app.route("/hakkinda")
 def hakkinda():

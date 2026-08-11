@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ baslik }}</title>
+    </head>
+    <body>
+        <h2> {{ baslik }} </h2>
+        <p> Toplam {{ urunler|length}} ürün</p>
+
+        <ul>
+            {% for u in urunler %}
+            <li> {{ u.ad }} - {{ u.fiyat }} TL </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
