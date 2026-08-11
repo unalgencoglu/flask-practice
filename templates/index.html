@@ -10,3 +10,7 @@
         {% endfor %}
     </ul>
 {% endblock %}
+
+{% block scriptler %}
+<script src="{{ url_for('static', filename='js.js') }}"></script>
+{% endblock %}

@@ -123,7 +123,7 @@ def ozet():
 
 @app.route("/panel")
 def panel():    
-    return render_template("index.html", baslik="Ürün Paneli", urunler=URUNLER)
+    return render_template("panel-js.html", baslik="Ürün Paneli", urunler=URUNLER)
 
 if __name__ == "__main__":
     app.run(debug=True)
