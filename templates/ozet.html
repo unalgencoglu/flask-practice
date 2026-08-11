@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block baslik %}Özet{% endblock %}
+
+{% block icerik %}
+    <h2> {{ baslik }} </h2>
+    <ul>
+        <li> Toplam ürün adedi: {{ toplam_urun }} </li>
+        <li> Ortalama fiyat: {{ ortalama_fiyat }} </li>
+    </ul>
+{% endblock %}

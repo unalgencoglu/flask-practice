@@ -10,6 +10,13 @@ URUNLER = [
     {"id": 4, "ad": "Kulaklık", "fiyat": 890, "kategori": "aksesuar"},
 ]
 
+def ozet_hesapla():
+    fiyatlar = [u["fiyat"] for u in URUNLER]
+    return {
+        "toplam_urun": len(fiyatlar),
+        "ortalama_fiyat": round(sum(fiyatlar) / len(fiyatlar), 2)
+    }
+
 @app.route("/")
 def anasayfa():
     return render_template("index.html", baslik="Ürün Paneli", urunler=URUNLER)
@@ -113,17 +120,17 @@ def urun(id):
     
     return jsonify({"hata": "Ürün bulunamadı"}), 404
 
+@app.route("/panel-js")
+def panel_js():
+    return render_template("panel-js.html", baslik="Ürün Paneli (JS)")
+
 @app.route("/api/ozet")
 def ozet():
-    fiyatlar = [u["fiyat"] for u in URUNLER]
-    urun_adedi = len(fiyatlar)
-    ortalama_fiyat = round(sum(fiyatlar) / len(fiyatlar), 2)
-    
-    return jsonify({"toplam_urun": urun_adedi, "ortalama_fiyat": ortalama_fiyat})
+    return jsonify(ozet_hesapla())
 
-@app.route("/panel")
-def panel():    
-    return render_template("panel-js.html", baslik="Ürün Paneli", urunler=URUNLER)
+@app.route("/ozet")
+def ozet_sayfa():
+    return render_template("ozet.html", **ozet_hesapla())
 
 if __name__ == "__main__":
     app.run(debug=True)
