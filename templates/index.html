@@ -6,7 +6,11 @@
     <h2> {{ baslik }} </h2>
     <ul>
         {% for u in urunler %}
-        <li> {{ u.ad }} - {{ u.fiyat }} TL </li>
+            {% if u.fiyat > 500 %}
+            <li> <b> {{ u.ad }} - {{ u.fiyat }} TL </b> </li>
+            {% else %}
+            <li> {{ u.ad }} - {{ u.fiyat }} TL </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}
